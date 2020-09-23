@@ -1,0 +1,31 @@
+<mat-spinner *ngIf="!complete"></mat-spinner>
+<!-- <div *ngIf="complete">
+    <div class="container">
+        <div class="items">
+            <div class="item" *ngFor="let product of products; let i=index" attr.style="animation-delay:{{i}}s">
+                <mat-card>
+                    <mat-card-title>{{product.name}}</mat-card-title>
+                    <mat-card-subtitle>{{product.price}} :-</mat-card-subtitle>
+
+                </mat-card>
+            </div>
+        </div>
+    </div>
+</div> -->
+
+<div *ngIf="complete">
+    <div class="scene">
+        <div class="carousel" attr.style="{{transform}}">
+            <div *ngFor="let product of sortedProducts; let i = index; trackBy: index"
+                attr.style="transform: rotateY({{theta * i}}deg) translateZ({{radius}}px);" class="carouselcell">
+                <mat-card (click)="goToDetails(product.id, product.name)"
+                    attr.style="background-image: url({{product.imageUrl}})">
+                    <mat-card-title-group>
+                        <mat-card-title>{{product.name}}</mat-card-title>
+                        <mat-card-subtitle>{{product.price}} :-</mat-card-subtitle>
+                    </mat-card-title-group>
+                </mat-card>
+            </div>
+        </div>
+    </div>
+</div>
