@@ -1,0 +1,20 @@
+<mat-loading-spinner *ngIf="!complete"></mat-loading-spinner>
+
+<mat-card *ngIf="complete">
+    <mat-card-title-group>
+        <mat-card-title>{{product.name}}</mat-card-title>
+        <mat-card-subtitle>{{product.price}} :-</mat-card-subtitle>
+    </mat-card-title-group>
+    <img class="cardImage" mat-card-image src="{{product.imageUrl}}" alt="imge of {{product.name}} movie">
+    <mat-card-content>
+        <p>{{product.description}}</p>
+    </mat-card-content>
+    <mat-card-action>
+        <button type="button" mat-icon-button color="primary" (click)="addToCart()">
+            <mat-icon>add</mat-icon>
+        </button>
+        <button type="button" mat-icon-button color="primary" (click)="addToFavorites()">
+            <mat-icon>favorite</mat-icon>
+        </button>
+    </mat-card-action>
+</mat-card>

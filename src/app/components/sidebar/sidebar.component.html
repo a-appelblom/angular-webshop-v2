@@ -1,1 +1,22 @@
-<p>sidebar works!</p>
+<!-- <mat-sidenav-container color="accent" class="sideDrawer" mode="side" [opened]="showSidebar">
+    <mat-sidenav>
+        <div>
+            Lots and lots
+        </div>
+        <div>
+            of information
+        </div>
+
+    </mat-sidenav>
+</mat-sidenav-container> -->
+
+<mat-sidenav-container class="example-container" (backdropClick)="close()">
+    <mat-sidenav #sidenav (keydown.escape)="close()" disableClose [opened]="showSidebar">
+        <p><button mat-button (click)="close()">Toggle</button></p>
+    </mat-sidenav>
+
+    <!-- <mat-sidenav-content>
+        <p><button mat-button (click)="sidenav.open()">Open</button></p>
+        <p>Closed due to: {{reason}}</p>
+    </mat-sidenav-content> -->
+</mat-sidenav-container>

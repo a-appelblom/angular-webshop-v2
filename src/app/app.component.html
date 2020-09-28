@@ -5,5 +5,13 @@
 <!-- 1. Products page with search, category sorting, all products -->
 <!-- 2. DetailsPage, single product page -->
 <!-- 3. Cart, order details, quantities -->
-
-<app-landing-page></app-landing-page>
+<div class="app">
+    <app-toolbar (toggleSidebarEvent)="toggleSidebar($event)"></app-toolbar>
+    <div class="centerSection">
+        <app-sidebar [showSidebar]="showSidebar"></app-sidebar>
+        <div class="contentContainer">
+            <router-outlet></router-outlet>
+        </div>
+    </div>
+    <app-footer></app-footer>
+</div>
