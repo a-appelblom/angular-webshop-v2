@@ -18,3 +18,20 @@ export interface Category {
   id: number;
   name: string;
 }
+
+export interface Order {
+  id?: number;
+  companyId: number;
+  created: string;
+  createdBy: string;
+  paymentMethod: string;
+  totalPrice: number;
+  status: number;
+  orderRows: OrderRows[];
+}
+
+export interface OrderRows {
+  productId: number;
+  orderId?: number;
+  amount: number;
+}

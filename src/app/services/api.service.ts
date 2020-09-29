@@ -1,7 +1,8 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import { Product, Category } from './APITypes';
+import { Product, Category, Order } from './APITypes';
+import { CartProduct } from './cart.service';
 
 @Injectable({
   providedIn: 'root',
@@ -24,5 +25,17 @@ export class APIService {
   getCategories(): Observable<Category[]> {
     const data = this.http.get<Category[]>(`${this.APIUrl}/categories`);
     return data;
+  }
+
+  getOrders(): Observable<Order[]> {
+    const data = this.http.get<Order[]>(`${this.APIUrl}/orders`);
+    data.subscribe((i) => {
+      console.log(i);
+    });
+    return data;
+  }
+
+  postOrder(cartProducts: CartProduct): void {
+    console.log(cartProducts);
   }
 }

@@ -14,9 +14,10 @@ import { ProductDetailComponent } from './components/product-detail/product-deta
 import { FourOhFourComponent } from './components/four-oh-four/four-oh-four.component';
 import { ProductListComponent } from './components/product-list/product-list.component';
 import { CartComponent } from './components/cart/cart.component';
+import { AdminPageComponent } from './components/admin-page/admin-page.component';
 
 @NgModule({
-  declarations: [AppComponent, LandingPageComponent, SidebarComponent, ToolbarComponent, FooterComponent, ProductDetailComponent, FourOhFourComponent, ProductListComponent, CartComponent],
+  declarations: [AppComponent, LandingPageComponent, SidebarComponent, ToolbarComponent, FooterComponent, ProductDetailComponent, FourOhFourComponent, ProductListComponent, CartComponent, AdminPageComponent],
   imports: [
     BrowserModule,
     HttpClientModule,
