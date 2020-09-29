@@ -27,11 +27,12 @@ export class APIService {
     return data;
   }
 
-  getOrders(): Observable<Order[]> {
-    const data = this.http.get<Order[]>(`${this.APIUrl}/orders`);
-    data.subscribe((i) => {
-      console.log(i);
-    });
+  getOrders(companyId: number): Observable<Order[]> {
+    console.log(companyId);
+
+    const data = this.http.get<Order[]>(
+      `${this.APIUrl}/orders?companyId=${companyId}`
+    );
     return data;
   }
 

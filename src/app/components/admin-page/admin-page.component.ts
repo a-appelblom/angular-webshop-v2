@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { APIService } from 'src/app/services/api.service';
-import { CartProduct, CartService } from 'src/app/services/cart.service';
+import { Order } from 'src/app/services/APITypes';
 
 @Component({
   selector: 'app-admin-page',
@@ -8,9 +8,38 @@ import { CartProduct, CartService } from 'src/app/services/cart.service';
   styleUrls: ['./admin-page.component.css'],
 })
 export class AdminPageComponent implements OnInit {
-  myCompany: number;
+  observer = {
+    next: (i) => {
+      this.orders = i;
+      const check = this.orders.some(
+        (item) => item.companyId === this.myCompanyInt
+      );
+
+      if (!check) {
+        this.orders = [];
+      }
+    },
+    error: (e) => {
+      console.error(e);
+    },
+    complete: () => {
+      this.complete = true;
+    },
+  };
+  complete = false;
+  myCompany: string;
+  myCompanyInt: number;
+  orders: Order[];
 
   constructor(private API: APIService) {}
 
   ngOnInit(): void {}
+  logger(): void {
+    console.log(this.myCompany);
+  }
+  submit(): void {
+    this.complete = false;
+    this.myCompanyInt = parseInt(this.myCompany, 0);
+    this.API.getOrders(this.myCompanyInt).subscribe(this.observer);
+  }
 }

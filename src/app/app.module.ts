@@ -2,6 +2,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { MaterialModule } from './material/material.module';
 import { HttpClientModule } from '@angular/common/http';
+import { FormsModule } from '@angular/forms';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -17,12 +18,24 @@ import { CartComponent } from './components/cart/cart.component';
 import { AdminPageComponent } from './components/admin-page/admin-page.component';
 
 @NgModule({
-  declarations: [AppComponent, LandingPageComponent, SidebarComponent, ToolbarComponent, FooterComponent, ProductDetailComponent, FourOhFourComponent, ProductListComponent, CartComponent, AdminPageComponent],
+  declarations: [
+    AppComponent,
+    LandingPageComponent,
+    SidebarComponent,
+    ToolbarComponent,
+    FooterComponent,
+    ProductDetailComponent,
+    FourOhFourComponent,
+    ProductListComponent,
+    CartComponent,
+    AdminPageComponent,
+  ],
   imports: [
     BrowserModule,
     HttpClientModule,
     AppRoutingModule,
     BrowserAnimationsModule,
+    FormsModule,
     MaterialModule,
   ],
   providers: [],
