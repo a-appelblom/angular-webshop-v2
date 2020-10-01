@@ -1,6 +1,12 @@
 <mat-spinner *ngIf="!complete"></mat-spinner>
 
 <div *ngIf="complete">
+    <div class="search">
+        <mat-form-field>
+            <mat-label>Search</mat-label>
+            <input matInput type="text" [(ngModel)]="searchString" (keyup.enter)="search()">
+        </mat-form-field>
+    </div>
     <div class="scene">
         <div class="carousel" attr.style="{{transform}}">
             <div *ngFor="let product of sortedProducts; let i = index; trackBy: index"

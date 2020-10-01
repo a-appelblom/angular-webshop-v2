@@ -2,3 +2,10 @@ mat-card {
   margin: 1rem;
   background-color: aliceblue;
 }
+
+.companyIdInput {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}

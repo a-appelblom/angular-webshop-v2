@@ -1,12 +1,14 @@
-<mat-form-field class="example-form-field">
-    <mat-label>Clearable input</mat-label>
-    <input matInput type="text" [(ngModel)]="myCompany" (keyup)=logger() (keyup.enter)="submit()">
-    <button mat-button *ngIf="myCompany" matSuffix mat-icon-button aria-label="Clear" (click)="myCompany=''">
-        <mat-icon>close</mat-icon>
-    </button>
-</mat-form-field>
+<div class="companyIdInput">
+    <mat-form-field class="example-form-field">
+        <mat-label>Enter company id</mat-label>
+        <input matInput type="text" [(ngModel)]="myCompany" (keyup)=logger() (keyup.enter)="submit()">
+        <button mat-button *ngIf="myCompany" matSuffix mat-icon-button aria-label="Clear" (click)="myCompany=''">
+            <mat-icon>close</mat-icon>
+        </button>
+    </mat-form-field>
+</div>
 <div *ngIf="complete">
-    <p>Your Orders</p>
+    <h2>Your Orders</h2>
     <div *ngIf="orders.length !== 0; else elseBlock">
         <mat-card *ngFor="let order of orders">
             <p>Order id: {{order.id}}</p>
@@ -16,9 +18,9 @@
             <p>Total cost: {{order.totalPrice}}</p>
             <p>Status for order: {{order.status}}</p>
             <div *ngFor="let orderRow of order.orderRows">
-                Produkter:
-                <p>{{orderRow.productId}}</p>
-                <p>{{orderRow.amount}}</p>
+                <h3>Produkter:</h3>
+                <p>Product Id: {{orderRow.productId}}</p>
+                <p>Amount: {{orderRow.amount}}</p>
             </div>
         </mat-card>
     </div>

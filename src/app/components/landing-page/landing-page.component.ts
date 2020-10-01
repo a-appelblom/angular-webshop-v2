@@ -1,5 +1,6 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
-import { interval, Subscription } from 'rxjs';
+import { Router } from '@angular/router';
+import { from, interval, Subscription } from 'rxjs';
 import { UserService } from 'src/app/services/user.service';
 import { APIService } from '../../services/api.service';
 import { Product } from '../../services/APITypes';
@@ -37,7 +38,13 @@ export class LandingPageComponent implements OnInit, OnDestroy {
   products: Product[];
   sortedProducts: Product[];
 
-  constructor(private api: APIService, private userService: UserService) {}
+  searchString: string;
+
+  constructor(
+    private api: APIService,
+    private userService: UserService,
+    private router: Router
+  ) {}
 
   ngOnInit(): void {
     this.complete = false;
@@ -68,10 +75,8 @@ export class LandingPageComponent implements OnInit, OnDestroy {
       .radius}px) rotateY(${angle}deg)`;
     this.selectedIndex++;
   }
-
-  goToDetails(id: number, name: string): void {
-    console.log(id, ':', name);
+  search(): void {
+    console.log(this.searchString);
+    this.router.navigate([`products/${this.searchString}`]);
   }
-
-  // Carousel
 }

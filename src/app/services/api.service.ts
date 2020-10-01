@@ -45,4 +45,11 @@ export class APIService {
         console.log(i);
       });
   }
+
+  search(searchString: string): Observable<Product[]> {
+    const data = this.http.get<Product[]>(
+      `${this.APIUrl}/search?searchText=${searchString}`
+    );
+    return data;
+  }
 }
