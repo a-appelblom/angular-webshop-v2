@@ -1,3 +1,5 @@
+import { PaymentMethod } from './user.service';
+
 export interface Product {
   id: number;
   name: string;
@@ -24,7 +26,7 @@ export interface Order {
   companyId: number;
   created: string;
   createdBy: string;
-  paymentMethod: string;
+  paymentMethod: PaymentMethod;
   totalPrice: number;
   status: number;
   orderRows: OrderRows[];

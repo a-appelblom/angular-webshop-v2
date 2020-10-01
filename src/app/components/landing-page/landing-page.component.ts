@@ -1,5 +1,6 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { interval, Subscription } from 'rxjs';
+import { UserService } from 'src/app/services/user.service';
 import { APIService } from '../../services/api.service';
 import { Product } from '../../services/APITypes';
 
@@ -36,7 +37,7 @@ export class LandingPageComponent implements OnInit, OnDestroy {
   products: Product[];
   sortedProducts: Product[];
 
-  constructor(private api: APIService) {}
+  constructor(private api: APIService, private userService: UserService) {}
 
   ngOnInit(): void {
     this.complete = false;

@@ -43,4 +43,12 @@ export class CartService {
   removeFromCart(id: number) {
     console.log(id);
   }
+
+  getCartTotal(): number {
+    const totals = this.inCart.map((i) => {
+      return i.quantity * i.price;
+    });
+    const total = totals.reduce((a, b) => a + b, 0);
+    return total;
+  }
 }

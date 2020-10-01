@@ -16,6 +16,10 @@ import { FourOhFourComponent } from './components/four-oh-four/four-oh-four.comp
 import { ProductListComponent } from './components/product-list/product-list.component';
 import { CartComponent } from './components/cart/cart.component';
 import { AdminPageComponent } from './components/admin-page/admin-page.component';
+import { CartService } from './services/cart.service';
+import { APIService } from './services/api.service';
+import { UserService } from './services/user.service';
+import { UsernameInputComponent } from './components/username-input/username-input.component';
 
 @NgModule({
   declarations: [
@@ -29,6 +33,7 @@ import { AdminPageComponent } from './components/admin-page/admin-page.component
     ProductListComponent,
     CartComponent,
     AdminPageComponent,
+    UsernameInputComponent,
   ],
   imports: [
     BrowserModule,
@@ -38,7 +43,7 @@ import { AdminPageComponent } from './components/admin-page/admin-page.component
     FormsModule,
     MaterialModule,
   ],
-  providers: [],
+  providers: [CartService, APIService, UserService],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

@@ -36,7 +36,13 @@ export class APIService {
     return data;
   }
 
-  postOrder(cartProducts: CartProduct): void {
-    console.log(cartProducts);
+  postOrder(order: Order): void {
+    this.http
+      .post(`${this.APIUrl}/orders`, order, {
+        headers: { 'Content-Type': 'application/json' },
+      })
+      .subscribe((i) => {
+        console.log(i);
+      });
   }
 }

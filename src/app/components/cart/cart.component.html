@@ -1,5 +1,20 @@
-<mat-card>
-    <div>
-        {{inCart[0].name}}
-    </div>
-</mat-card>
+<div *ngIf="inCart.length !== 0">
+    <mat-card *ngFor="let item of inCart">
+        <mat-card-title-group>
+            <mat-card-title>{{item.name}}</mat-card-title>
+            <mat-card-subtitle>
+                Amount: {{item.quantity}} at {{item.price}}:- each for a total of {{item.quantity * item.price}} :-
+            </mat-card-subtitle>
+            <img mat-card-md-image src="{{item.imageUrl}}" alt="Poster for {{item.name}}">
+        </mat-card-title-group>
+    </mat-card>
+    <h2>Total: {{cartTotal}}:-</h2>
+
+    <button mat-raised-button color="accent" (click)="confirmPurchase()">Confirm Purchase</button>
+</div>
+
+
+
+<div *ngIf="inCart.length === 0">
+    <h1>Your cart is empty</h1>
+</div>

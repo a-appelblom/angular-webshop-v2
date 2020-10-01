@@ -9,12 +9,12 @@
     <p>Your Orders</p>
     <div *ngIf="orders.length !== 0; else elseBlock">
         <mat-card *ngFor="let order of orders">
-            <p>Orderns id: {{order.id}}</p>
-            <p>Skapad: {{order.created}}</p>
-            <p>Beställare:{{order.createdBy}}</p>
-            <p>Betalningsmetod: {{order.paymentMethod}}</p>
-            <p>Totalsumma: {{order.totalPrice}}</p>
-            <p>Statuskod för orde: {{order.status}}</p>
+            <p>Order id: {{order.id}}</p>
+            <p>Created: {{order.created}}</p>
+            <p>Customer:{{order.createdBy}}</p>
+            <p>Pyment Method: {{order.paymentMethod}}</p>
+            <p>Total cost: {{order.totalPrice}}</p>
+            <p>Status for order: {{order.status}}</p>
             <div *ngFor="let orderRow of order.orderRows">
                 Produkter:
                 <p>{{orderRow.productId}}</p>
