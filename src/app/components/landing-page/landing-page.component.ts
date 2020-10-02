@@ -40,11 +40,7 @@ export class LandingPageComponent implements OnInit, OnDestroy {
 
   searchString: string;
 
-  constructor(
-    private api: APIService,
-    private userService: UserService,
-    private router: Router
-  ) {}
+  constructor(private api: APIService, private router: Router) {}
 
   ngOnInit(): void {
     this.complete = false;

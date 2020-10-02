@@ -1,7 +1,11 @@
 <mat-toolbar class="toolbar">
-    <button type="button" mat-icon-button color="primary" (click)="toggleSidebar()">
+    <button mat-Button [matMenuTriggerFor]="menu" type="button">
         <mat-icon>menu</mat-icon>
     </button>
+    <app-sidebar #menu></app-sidebar>
+    <!-- <button type="button" mat-icon-button color="primary" (click)="toggleSidebar()">
+        <mat-icon>menu</mat-icon>
+    </button> -->
     <div routerLink=""><img src="../../../assets/mormorbettysprylar.png" alt="Logo"></div>
     <button type="button" mat-icon-button color="primary" routerLink="cart">
         <mat-icon matBadge="{{getQuantity()}}" matBadgeColor="accent">shopping_cart</mat-icon>

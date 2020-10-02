@@ -5,10 +5,13 @@
             <input matInput type="text" [(ngModel)]="searchString" (keyup.enter)="search()">
         </mat-form-field>
     </div>
-    <div *ngIf="products.length === 0">
-        No Results
+    <div *ngIf="complete">
+        <div *ngIf="products.length === 0">
+            No Results
+        </div>
+        <mat-card *ngFor="let product of products">
+            <mat-card-title>{{product.name}}</mat-card-title>
+        </mat-card>
+
     </div>
-    <mat-card *ngFor="let product of products">
-        <mat-card-title>{{product.name}}</mat-card-title>
-    </mat-card>
 </div>

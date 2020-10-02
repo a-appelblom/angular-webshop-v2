@@ -1,22 +1,15 @@
-<!-- <mat-sidenav-container color="accent" class="sideDrawer" mode="side" [opened]="showSidebar">
-    <mat-sidenav>
-        <div>
-            Lots and lots
-        </div>
-        <div>
-            of information
-        </div>
+<mat-menu #menu="matMenu">
+    <button mat-button routerLink="cart">Your Cart</button>
 
-    </mat-sidenav>
-</mat-sidenav-container> -->
+    <button mat-button [matMenuTriggerFor]="products">products</button>
 
-<mat-sidenav-container class="example-container" (backdropClick)="close()">
-    <mat-sidenav #sidenav (keydown.escape)="close()" disableClose [opened]="showSidebar">
-        <p><button mat-button (click)="close()">Toggle</button></p>
-    </mat-sidenav>
+    <mat-menu #products>
+        <button mat-button routerLink="products">All Products</button>
+        <button mat-button [matMenuTriggerFor]="categories">Categories</button>
+    </mat-menu>
+    <mat-menu *ngIf="complete" #categories>
+        <button *ngFor="let category of categories">{{category.name}}</button>
+    </mat-menu>
 
-    <!-- <mat-sidenav-content>
-        <p><button mat-button (click)="sidenav.open()">Open</button></p>
-        <p>Closed due to: {{reason}}</p>
-    </mat-sidenav-content> -->
-</mat-sidenav-container>
+    <button mat-button routerLink="admin">Admin Page</button>
+</mat-menu>
