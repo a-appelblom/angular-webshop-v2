@@ -5,12 +5,24 @@
             <input matInput type="text" [(ngModel)]="searchString" (keyup.enter)="search()">
         </mat-form-field>
     </div>
-    <div *ngIf="complete">
+    <div class="list" *ngIf="complete">
         <div *ngIf="products.length === 0">
             No Results
         </div>
-        <mat-card *ngFor="let product of products">
-            <mat-card-title>{{product.name}}</mat-card-title>
+        <mat-card *ngFor="let product of products" (click)="reRoute(product.id)">
+            <mat-card-title-group>
+                <mat-card-title class="mat-display-1">{{product.name}}</mat-card-title>
+                <mat-card-subtitle class="mat-display-2">{{product.price}} :-</mat-card-subtitle>
+                <img mat-card-lg-image src="{{product.imageUrl}}" alt="Poster for {{product.imageUrl}}">
+            </mat-card-title-group>
+            <mat-card-actions>
+                <button type="button" mat-icon-button color="primary" (click)="addToCart()">
+                    <mat-icon>add</mat-icon>
+                </button>
+                <button type="button" mat-icon-button color="primary" (click)="addToFavorites()">
+                    <mat-icon>favorite</mat-icon>
+                </button>
+            </mat-card-actions>
         </mat-card>
 
     </div>
