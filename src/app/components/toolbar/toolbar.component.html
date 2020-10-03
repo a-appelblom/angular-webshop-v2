@@ -1,14 +1,11 @@
 <mat-toolbar class="toolbar">
-    <button mat-icon-button [matMenuTriggerFor]="menu" type="button">
+    <button *ngIf="complete" mat-icon-button [matMenuTriggerFor]="sidebar.mainMenu" type="button">
         <mat-icon>menu</mat-icon>
     </button>
-    <!-- <button type="button" mat-icon-button color="primary" (click)="toggleSidebar()">
-        <mat-icon>menu</mat-icon>
-    </button> -->
     <button mat-button routerLink=""><img src="../../../assets/mormorbettysprylar.png" alt="Logo"></button>
     <button type="button" mat-icon-button color="primary" routerLink="cart">
         <mat-icon matBadge="{{getQuantity()}}" matBadgeColor="accent">shopping_cart</mat-icon>
     </button>
 </mat-toolbar>
 
-<app-sidebar #menu></app-sidebar>
+<app-sidebar #sidebar="sidebar" [categories]="categories"></app-sidebar>

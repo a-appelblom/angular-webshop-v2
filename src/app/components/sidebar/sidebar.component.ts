@@ -1,6 +1,12 @@
-import { Component, Input, OnInit, ViewChild } from '@angular/core';
-import { MatMenu } from '@angular/material/menu';
-import { MatSidenav } from '@angular/material/sidenav';
+import {
+  Component,
+  EventEmitter,
+  Input,
+  OnInit,
+  Output,
+  ViewChild,
+} from '@angular/core';
+import { MatMenu, MatMenuItem } from '@angular/material/menu';
 import { APIService } from 'src/app/services/api.service';
 import { Category } from 'src/app/services/APITypes';
 
@@ -8,28 +14,13 @@ import { Category } from 'src/app/services/APITypes';
   selector: 'app-sidebar',
   templateUrl: './sidebar.component.html',
   styleUrls: ['./sidebar.component.css'],
+  exportAs: 'sidebar',
 })
 export class SidebarComponent implements OnInit {
-  @ViewChild('sidenav') sidenav: MatSidenav;
-  @Input() showSidebar: boolean;
-  observer = {
-    next: (i) => {
-      this.categories = i.filter(
-        (category: Category) => category.name.length > 0
-      );
-    },
-    error: (error) => console.error(error),
-    complete: () => {
-      this.complete = true;
-      console.log(this.categories);
-    },
-  };
-  categories: Category[];
-  complete = false;
+  @ViewChild(MatMenu, { static: true }) mainMenu: MatMenu;
+  @Input() categories: Category[];
+  menuItem: MatMenuItem;
 
-  constructor(private API: APIService) {}
-
-  ngOnInit(): void {
-    this.API.getCategories().subscribe(this.observer);
-  }
+  constructor() {}
+  ngOnInit(): void {}
 }

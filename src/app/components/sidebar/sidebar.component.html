@@ -1,15 +1,22 @@
-<mat-menu #menu="matMenu">
-    <button mat-button routerLink="cart">Your Cart</button>
+<mat-menu #mainMenu="matMenu">
+    <button mat-menu-item [matMenuTriggerFor]="products">products</button>
+    <button mat-menu-item routerLink="">Home</button>
+    <button mat-menu-item routerLink="cart">Your Cart</button>
+    <button mat-menu-item routerLink="admin">Admin Page</button>
+</mat-menu>
 
-    <button mat-button [matMenuTriggerFor]="products">products</button>
+<mat-menu #products="matMenu">
+    <button mat-menu-item routerLink="products">All Products</button>
+    <button mat-menu-item [matMenuTriggerFor]="categories">Categories</button>
+</mat-menu>
 
-    <mat-menu #products>
-        <button mat-button routerLink="products">All Products</button>
-        <button mat-button [matMenuTriggerFor]="categories">Categories</button>
-    </mat-menu>
-    <mat-menu *ngIf="complete" #categories>
-        <button *ngFor="let category of categories">{{category.name}}</button>
-    </mat-menu>
-
-    <button mat-button routerLink="admin">Admin Page</button>
+<mat-menu #categoriesMenu="matMenu">
+    <button *ngFor="let category of categories" mat-menu-item routerLink="products/{{category.id}}">
+        {{category.name}}
+    </button>
+    <!-- <ng-template matMenuContent let-categories="menuItems">
+                        <button mat-menu-item *ngFor="let category of categories">
+                            {{category.name}}
+                        </button>
+                    </ng-template> -->
 </mat-menu>
