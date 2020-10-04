@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
+import { Router } from '@angular/router';
 
 import { CartProduct, CartService } from 'src/app/services/cart.service';
 import { OrderService } from 'src/app/services/order.service';
@@ -23,7 +24,8 @@ export class CartComponent implements OnInit {
     private cart: CartService,
     private orderService: OrderService,
     private userService: UserService,
-    public dialog: MatDialog
+    public dialog: MatDialog,
+    private router: Router
   ) {}
 
   ngOnInit(): void {
@@ -32,6 +34,11 @@ export class CartComponent implements OnInit {
   }
   confirmPurchase(): void {
     this.openDialog();
+  }
+
+  delete(item: CartProduct): void {
+    this.inCart = this.cart.removeFromCart(item.id);
+    this.cartTotal = this.cart.getCartTotal();
   }
 
   openDialog(): void {
@@ -56,6 +63,9 @@ export class CartComponent implements OnInit {
       this.userService.saveId(this.companyId);
       this.userService.savePayment(this.payment);
       this.orderService.createOrder();
+
+      this.cart.clearCart();
+      this.router.navigate(['']);
     });
   }
 }

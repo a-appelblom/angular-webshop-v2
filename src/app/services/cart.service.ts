@@ -40,8 +40,9 @@ export class CartService {
     }
   }
 
-  removeFromCart(id: number): void {
-    console.log(id);
+  removeFromCart(id: number): CartProduct[] {
+    this.inCart = this.inCart.filter((i) => i.id !== id);
+    return this.inCart;
   }
 
   getCartTotal(): number {
@@ -50,5 +51,9 @@ export class CartService {
     });
     const total = totals.reduce((a, b) => a + b, 0);
     return total;
+  }
+
+  clearCart(): void {
+    this.inCart = [];
   }
 }

@@ -23,7 +23,6 @@ mat-card-actions {
   display: flex;
   justify-content: space-evenly;
 }
-
 mat-icon {
   font-size: 2rem;
 }

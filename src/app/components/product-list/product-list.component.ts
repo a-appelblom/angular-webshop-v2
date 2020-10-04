@@ -4,6 +4,7 @@ import { Location } from '@angular/common';
 
 import { APIService } from 'src/app/services/api.service';
 import { Product } from 'src/app/services/APITypes';
+import { CartService } from 'src/app/services/cart.service';
 
 @Component({
   selector: 'app-product-list',
@@ -40,7 +41,8 @@ export class ProductListComponent implements OnInit {
     private API: APIService,
     private route: ActivatedRoute,
     private router: Router,
-    private location: Location
+    private location: Location,
+    private cart: CartService
   ) {}
 
   ngOnInit(): void {
@@ -74,5 +76,9 @@ export class ProductListComponent implements OnInit {
 
   updateUrl(): void {
     this.location.go(`products/${this.searchString}`);
+  }
+
+  addToCart(product: Product): void {
+    this.cart.addToCart(product);
   }
 }

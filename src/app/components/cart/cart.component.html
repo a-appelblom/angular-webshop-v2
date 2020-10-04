@@ -7,6 +7,11 @@
             </mat-card-subtitle>
             <img mat-card-md-image src="{{item.imageUrl}}" alt="Poster for {{item.name}}">
         </mat-card-title-group>
+        <mat-card-actions>
+            <button mat-icon-button (click)="delete(item)">
+                <mat-icon color="warn">delete</mat-icon>
+            </button>
+        </mat-card-actions>
     </mat-card>
     <h2>Total: {{cartTotal}}:-</h2>
 

@@ -7,6 +7,7 @@ import { APIService } from 'src/app/services/api.service';
 import { OrderService } from 'src/app/services/order.service';
 
 import { CartComponent } from './cart.component';
+import { RouterTestingModule } from '@angular/router/testing';
 
 describe('CartComponent', () => {
   let component: CartComponent;
@@ -15,7 +16,7 @@ describe('CartComponent', () => {
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       declarations: [CartComponent],
-      imports: [HttpClientTestingModule, MaterialModule],
+      imports: [HttpClientTestingModule, MaterialModule, RouterTestingModule],
       providers: [APIService, OrderService],
     }).compileComponents();
   }));
