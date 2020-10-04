@@ -19,6 +19,7 @@ export class ToolbarComponent implements OnInit {
     error: (error) => console.error(error),
     complete: () => {
       this.complete = true;
+      console.log(this.categories);
     },
   };
   complete = false;
