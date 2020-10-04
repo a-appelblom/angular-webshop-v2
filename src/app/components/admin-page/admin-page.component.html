@@ -11,17 +11,24 @@
     <h2>Your Orders</h2>
     <div *ngIf="orders.length !== 0; else elseBlock">
         <mat-card *ngFor="let order of orders">
-            <p>Order id: {{order.id}}</p>
-            <p>Created: {{order.created}}</p>
-            <p>Customer:{{order.createdBy}}</p>
-            <p>Pyment Method: {{order.paymentMethod}}</p>
-            <p>Total cost: {{order.totalPrice}}</p>
-            <p>Status for order: {{order.status}}</p>
-            <div *ngFor="let orderRow of order.orderRows">
-                <h3>Produkter:</h3>
-                <p>Product Id: {{orderRow.productId}}</p>
-                <p>Amount: {{orderRow.amount}}</p>
-            </div>
+            <mat-card-content>
+                <p>Order id: {{order.id}}</p>
+                <p>Created: {{order.created}}</p>
+                <p>Customer:{{order.createdBy}}</p>
+                <p>Pyment Method: {{order.paymentMethod}}</p>
+                <p>Total cost: {{order.totalPrice}}</p>
+                <p>Status for order: {{order.status}}</p>
+                <div *ngFor="let orderRow of order.orderRows">
+                    <h3>Produkter:</h3>
+                    <p>Product Id: {{orderRow.productId}}</p>
+                    <p>Amount: {{orderRow.amount}}</p>
+                </div>
+            </mat-card-content>
+            <mat-card-actions>
+                <button mat-raised-button color="warn" (click)="deleteOrder(order)">
+                    Delete this order
+                </button>
+            </mat-card-actions>
         </mat-card>
     </div>
     <ng-template #elseBlock>

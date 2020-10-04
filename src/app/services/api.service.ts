@@ -45,6 +45,11 @@ export class APIService {
       });
   }
 
+  deleteOrder(id: number): Observable<any> {
+    const deleted = this.http.delete(`${this.APIUrl}/orders/${id}`);
+    return deleted;
+  }
+
   search(searchString: string): Observable<Product[]> {
     const data = this.http.get<Product[]>(
       `${this.APIUrl}/search?searchText=${searchString}`

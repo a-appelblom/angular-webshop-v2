@@ -42,4 +42,15 @@ export class AdminPageComponent implements OnInit {
     this.myCompanyInt = parseInt(this.myCompany, 0);
     this.API.getOrders(this.myCompanyInt).subscribe(this.observer);
   }
+  deleteOrder(order: Order): void {
+    console.log(order);
+    this.API.deleteOrder(order.id).subscribe(
+      (i) => console.log(i),
+      (error) => console.error(error),
+      () => {
+        this.complete = false;
+        this.API.getOrders(this.myCompanyInt).subscribe(this.observer);
+      }
+    );
+  }
 }
