@@ -1,4 +1,8 @@
+import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { MaterialModule } from 'src/app/material/material.module';
+import { APIService } from 'src/app/services/api.service';
+import { SidebarComponent } from '../sidebar/sidebar.component';
 
 import { ToolbarComponent } from './toolbar.component';
 
@@ -8,7 +12,9 @@ describe('ToolbarComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ToolbarComponent],
+      declarations: [ToolbarComponent, SidebarComponent],
+      imports: [HttpClientTestingModule, MaterialModule],
+      providers: [APIService],
     }).compileComponents();
   }));
 
@@ -21,5 +27,4 @@ describe('ToolbarComponent', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
-  it('Should display a menu and a logo', () => {});
 });

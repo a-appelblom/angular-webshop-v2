@@ -1,4 +1,6 @@
+import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { APIService } from 'src/app/services/api.service';
 
 import { AdminPageComponent } from './admin-page.component';
 
@@ -8,9 +10,10 @@ describe('AdminPageComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ AdminPageComponent ]
-    })
-    .compileComponents();
+      declarations: [AdminPageComponent],
+      imports: [HttpClientTestingModule],
+      providers: [APIService],
+    }).compileComponents();
   }));
 
   beforeEach(() => {

@@ -1,11 +1,4 @@
-import {
-  Component,
-  EventEmitter,
-  Input,
-  OnInit,
-  Output,
-  ViewChild,
-} from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { MatMenu, MatMenuItem } from '@angular/material/menu';
 import { APIService } from 'src/app/services/api.service';
 import { Category } from 'src/app/services/APITypes';
@@ -18,7 +11,6 @@ import { Category } from 'src/app/services/APITypes';
 })
 export class SidebarComponent implements OnInit {
   @ViewChild(MatMenu, { static: true }) mainMenu: MatMenu;
-  // @Input() categories: Category[];
   observer = {
     next: (i) => {
       this.categories = i.filter((category: Category) => category.name);
@@ -26,13 +18,8 @@ export class SidebarComponent implements OnInit {
     error: (error) => console.error(error),
     complete: () => {
       this.complete = true;
-      console.log(this.categories);
-      this.categoryData = {
-        cats: this.categories,
-      };
     },
   };
-  categoryData: any;
   categories: Category[];
   menuItem: MatMenuItem;
   complete = false;

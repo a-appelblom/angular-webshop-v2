@@ -7,7 +7,7 @@
 
 <mat-menu #products="matMenu">
     <button mat-menu-item routerLink="products">All Products</button>
-    <button mat-menu-item [matMenuTriggerFor]="categoriesMenu" [matMenuTriggerData]="categoryData">Categories</button>
+    <button mat-menu-item [matMenuTriggerFor]="categoriesMenu">Categories</button>
 </mat-menu>
 
 <mat-menu #categoriesMenu="matMenu">

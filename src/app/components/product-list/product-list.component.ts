@@ -14,7 +14,16 @@ export class ProductListComponent implements OnInit {
   observer = {
     next: (i) => {
       if (Array.isArray(i)) {
-        this.products = i;
+        if (this.category) {
+          this.products = i.filter((item: Product) =>
+            item.productCategory.some(
+              (productCategory) =>
+                parseInt(productCategory.categoryId, 0) === this.category
+            )
+          );
+        } else {
+          this.products = i;
+        }
       }
     },
 
@@ -22,6 +31,7 @@ export class ProductListComponent implements OnInit {
     complete: () => (this.complete = true),
   };
   searchString: string;
+  category: number;
   products: Product[];
   complete = false;
   currentUrl: string;
@@ -35,13 +45,20 @@ export class ProductListComponent implements OnInit {
 
   ngOnInit(): void {
     this.route.params.subscribe((params) => {
-      this.searchString = params.parameter;
+      if (params.hasOwnProperty('searchString')) {
+        this.searchString = params.searchString;
+
+        if (this.searchString && this.searchString.length > 0) {
+          this.API.search(this.searchString).subscribe(this.observer);
+        } else if (!this.searchString || this.searchString.length === 0) {
+          this.API.getProducts().subscribe(this.observer);
+        }
+      } else if (params.hasOwnProperty('categoryId')) {
+        this.category = parseInt(params.categoryId, 0);
+
+        this.API.getProducts().subscribe(this.observer);
+      }
     });
-    if (this.searchString && this.searchString.length > 0) {
-      this.API.search(this.searchString).subscribe(this.observer);
-    } else if (!this.searchString || this.searchString.length === 0) {
-      this.API.getProducts().subscribe(this.observer);
-    }
   }
   search(): void {
     this.updateUrl();

@@ -1,4 +1,10 @@
+import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+
+import { MaterialModule } from '../../material/material.module';
+
+import { APIService } from 'src/app/services/api.service';
+import { OrderService } from 'src/app/services/order.service';
 
 import { CartComponent } from './cart.component';
 
@@ -8,9 +14,10 @@ describe('CartComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ CartComponent ]
-    })
-    .compileComponents();
+      declarations: [CartComponent],
+      imports: [HttpClientTestingModule, MaterialModule],
+      providers: [APIService, OrderService],
+    }).compileComponents();
   }));
 
   beforeEach(() => {

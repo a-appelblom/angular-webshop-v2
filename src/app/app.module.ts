@@ -1,7 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { MaterialModule } from './material/material.module';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
 
 import { AppRoutingModule } from './app-routing.module';
@@ -43,7 +43,7 @@ import { UsernameInputComponent } from './components/username-input/username-inp
     FormsModule,
     MaterialModule,
   ],
-  providers: [CartService, APIService, UserService],
+  providers: [CartService, APIService, UserService, HttpClient],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

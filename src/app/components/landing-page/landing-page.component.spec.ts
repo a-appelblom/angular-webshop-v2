@@ -1,4 +1,7 @@
+import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { RouterTestingModule } from '@angular/router/testing';
+import { APIService } from 'src/app/services/api.service';
 
 import { LandingPageComponent } from './landing-page.component';
 
@@ -9,6 +12,8 @@ describe('LandingPageComponent', () => {
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       declarations: [LandingPageComponent],
+      imports: [HttpClientTestingModule, RouterTestingModule],
+      providers: [APIService],
     }).compileComponents();
   }));
 

@@ -2,7 +2,6 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { Product, Category, Order } from './APITypes';
-import { CartProduct } from './cart.service';
 
 @Injectable({
   providedIn: 'root',

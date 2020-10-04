@@ -1,5 +1,5 @@
 <mat-toolbar class="toolbar">
-    <button *ngIf="complete" mat-icon-button [matMenuTriggerFor]="sidebar.mainMenu" type="button">
+    <button mat-icon-button [matMenuTriggerFor]="sidebar.mainMenu" type="button">
         <mat-icon>menu</mat-icon>
     </button>
     <button mat-button routerLink=""><img src="../../../assets/mormorbettysprylar.png" alt="Logo"></button>
@@ -8,4 +8,4 @@
     </button>
 </mat-toolbar>
 
-<app-sidebar #sidebar="sidebar" [categories]="categories"></app-sidebar>
+<app-sidebar #sidebar="sidebar"></app-sidebar>

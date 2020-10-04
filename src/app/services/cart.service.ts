@@ -40,7 +40,7 @@ export class CartService {
     }
   }
 
-  removeFromCart(id: number) {
+  removeFromCart(id: number): void {
     console.log(id);
   }
 
